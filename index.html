@@ -109,7 +109,8 @@
 
   /* ---------- Contact ---------- */
   .contact{background:var(--ink);color:var(--paper);border-radius:28px;padding:clamp(36px,6vw,72px);margin:0 24px}
-  .contact-inner{max-width:var(--maxw);margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .contact-cta{max-width:640px;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;gap:20px}
+  .contact-cta .btn{margin-top:8px;font-size:16px;padding:16px 34px}
   .contact h2{font-size:clamp(34px,5vw,58px);margin-bottom:18px}
   .contact .swoosh-blue{color:var(--blue)}
   .contact p{color:#c9c9c9;max-width:40ch}
@@ -143,7 +144,6 @@
     .split{grid-template-columns:1fr}
     .stats{grid-template-columns:1fr 1fr;gap:36px 24px}
     .steps{grid-template-columns:1fr}
-    .contact-inner{grid-template-columns:1fr;gap:32px}
     section{padding:72px 0}
   }
 </style>
@@ -255,34 +255,11 @@
 <!-- ============ CONTACT ============ -->
 <section id="contact" style="padding-bottom:96px">
   <div class="contact reveal">
-    <div class="contact-inner">
-      <div>
-        <h2>Let's get<br><span class="swoosh-blue">moving.</span></h2>
-        <p>Whether you're here to sell or here to hire a team that sells, drop your info and we'll be in touch fast.</p>
-      </div>
-      <!-- mailto form: swap the action for Formspree/your backend when ready -->
-      <form id="lead-form" action="https://formspree.io/f/your-id-here" method="POST">
-        <label for="role">I am a…</label>
-        <select id="role" name="role" required>
-          <option value="rep">Sales rep looking to earn</option>
-          <option value="company">Company that needs a field team</option>
-        </select>
-
-        <label for="name">Name</label>
-        <input id="name" name="name" type="text" placeholder="Full name" required>
-
-        <label for="email">Email</label>
-        <input id="email" name="email" type="email" placeholder="you@email.com" required>
-
-        <label for="phone">Phone</label>
-        <input id="phone" name="phone" type="tel" placeholder="(555) 000-0000">
-
-        <label for="message">Tell us a bit</label>
-        <textarea id="message" name="message" placeholder="Your experience, your market, or what you're looking for…"></textarea>
-
-        <button type="submit" class="btn btn-blue">Send it</button>
-        <p class="form-note">We reply within one business day.</p>
-      </form>
+    <div class="contact-cta">
+      <h2>Let's get<br><span class="swoosh-blue">moving.</span></h2>
+      <p>Whether you're here to sell or here to hire a team that sells, start a chat and we'll be in touch fast.</p>
+      <button type="button" class="btn btn-blue" id="open-chat">Start the conversation</button>
+      <p class="form-note">Tap the chat to tell us if you're a rep or a company — we reply fast.</p>
     </div>
   </div>
 </section>
@@ -310,12 +287,19 @@
   // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Prefill the role dropdown when a specific CTA is clicked
-  document.querySelectorAll('[data-role]').forEach(function(el){
-    el.addEventListener('click', function(){
-      var sel = document.getElementById('role');
-      if(sel) sel.value = el.getAttribute('data-role');
-    });
+  // Open the LeadConnector chat widget from any CTA
+  function openChat(){
+    var w = document.querySelector('chat-widget');
+    if(w){ try{ w.click(); return; }catch(e){} }
+    // fallback: if the widget hasn't loaded, retry briefly
+    var tries = 0, t = setInterval(function(){
+      var el = document.querySelector('chat-widget');
+      if(el){ clearInterval(t); try{ el.click(); }catch(e){} }
+      if(++tries > 10) clearInterval(t);
+    }, 300);
+  }
+  document.querySelectorAll('#open-chat, [data-role]').forEach(function(el){
+    el.addEventListener('click', function(ev){ ev.preventDefault(); openChat(); });
   });
 
   // Scroll reveal
@@ -324,5 +308,11 @@
   }, {threshold:0.12});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
 </script>
+
+<!-- LeadConnector chat widget (the only info-collection tool on the site) -->
+<script src="https://widgets.leadconnectorhq.com/loader.js"
+        data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+        data-widget-id="6a45905652b633f861217a50"
+        data-source="WEB_USER"></script>
 </body>
 </html>
