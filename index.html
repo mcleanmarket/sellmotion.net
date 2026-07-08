@@ -132,6 +132,14 @@
   .footer-links{display:flex;gap:28px;font-weight:600;font-size:15px}
   .footer-links a:hover{color:var(--blue)}
   .footer-bottom{padding-top:24px;font-size:14px;color:var(--grey);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+  .footer-contact{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:32px 0;border-bottom:1px solid var(--line);font-size:14px;color:#333;line-height:1.6}
+  .footer-contact a{color:#333}
+  .footer-contact a:hover{color:var(--blue)}
+  .fc-label{display:block;font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:11px;color:var(--grey);margin-bottom:6px}
+  .footer-legal{display:flex;gap:24px}
+  .footer-legal a{font-weight:600}
+  .footer-legal a:hover{color:var(--blue)}
+  @media (max-width:860px){.footer-contact{grid-template-columns:1fr 1fr}}
 
   /* ---------- Reveal ---------- */
   .reveal{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
@@ -276,9 +284,30 @@
         <a href="#contact">Contact</a>
       </div>
     </div>
+    <div class="footer-contact">
+      <div>
+        <span class="fc-label">Business</span>
+        McLean Marketing LLC<br>d/b/a Motion Marketing
+      </div>
+      <div>
+        <span class="fc-label">Address</span>
+        725 E 600 S<br>Provo, UT 84606
+      </div>
+      <div>
+        <span class="fc-label">Email</span>
+        <a href="mailto:admin@sellmotion.net">admin@sellmotion.net</a>
+      </div>
+      <div>
+        <span class="fc-label">Phone</span>
+        <a href="tel:+18018000549">(801) 800-0549</a>
+      </div>
+    </div>
     <div class="footer-bottom">
-      <span>© <span id="year"></span> Motion MKTG. All rights reserved.</span>
-      <span>Door-to-door marketing for internet &amp; telecom brands.</span>
+      <span>© <span id="year"></span> McLean Marketing LLC. All rights reserved.</span>
+      <span class="footer-legal">
+        <a href="terms.html">Terms of Service</a>
+        <a href="privacy.html">Privacy Policy</a>
+      </span>
     </div>
   </div>
 </footer>
