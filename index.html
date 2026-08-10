@@ -68,11 +68,10 @@
 
   /* ---------- Marquee ---------- */
   .marquee{border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);background:var(--ink);color:var(--paper);overflow:hidden;padding:16px 0;margin-top:56px}
-  .marquee-track{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:scroll 26s linear infinite}
+  .marquee-track{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:scroll 26s linear infinite;will-change:transform;transform:translate3d(0,0,0)}
   .marquee span{font-family:'Archivo',sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(22px,3vw,34px);letter-spacing:-.01em;display:flex;align-items:center;gap:48px}
   .marquee .dot{width:12px;height:12px;border-radius:50%;background:var(--blue);display:inline-block}
-  @keyframes scroll{to{transform:translateX(-50%)}}
-  @media (prefers-reduced-motion:reduce){.marquee-track{animation:none}}
+  @keyframes scroll{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
 
   /* ---------- Section base ---------- */
   section{padding:96px 0}
@@ -183,13 +182,13 @@
   <div class="wrap">
     <div class="reveal">
       <p class="eyebrow">Door-to-door done right</p>
-      <h1>Sales in<br><span class="swoosh">Motion.</span></h1>
-      <p class="lead">We build and run door-to-door teams that close. Reps come to earn and grow. Internet and telecom brands come for coverage they can count on.</p>
+      <h1>Knock doors.<br>Get <span class="swoosh">Motion.</span></h1>
+      <p class="lead">We hire full and part-time D2D reps and set them up to win. No cold guessing — we supply the leads, the pitch, the training, and a route to run every day. You bring the work ethic; we handle the rest.</p>
       <div class="hero-cta">
-        <a href="#reps" class="btn btn-blue">Join as a rep</a>
-        <a href="#partners" class="btn btn-ghost">Partner with us</a>
+        <a href="#contact" class="btn btn-blue">Apply now</a>
+        <a href="#reps" class="btn btn-ghost">Why Motion</a>
       </div>
-      <p class="hero-note">No experience required for reps · Nationwide field coverage for partners</p>
+      <p class="hero-note">Full-time &amp; part-time roles · Leads supplied · Daily, weekly &amp; monthly incentives</p>
     </div>
   </div>
 
@@ -209,28 +208,28 @@
       <!-- Reps -->
       <div class="card reveal">
         <span class="tag">For sales reps</span>
-        <h3>Hustle hard.<br>Get paid harder.</h3>
-        <p>If you can talk to people and you don't quit, we'll hand you the training, the territory, and the products that sell. Your income is capped by effort — nothing else.</p>
+        <h3>Plug into a program<br>built to win.</h3>
+        <p>We hire reps and set them up to actually succeed. You're not guessing where to knock or how to pitch — we hand you the leads, a proven system, and a route to work every day. You bring the work ethic.</p>
         <ul>
-          <li>Uncapped commission on every deal you close</li>
-          <li>Real coaching from closers, not a script and a shrug</li>
-          <li>Clear path from rookie to team lead to manager</li>
-          <li>Products people actually want (internet, TV, mobile)</li>
+          <li>Leads supplied and a mapped route — we tell you exactly where to go</li>
+          <li>A proven pitch and hands-on training from people who close</li>
+          <li>Daily, weekly, and monthly incentives — car-payment incentives available</li>
+          <li>Real full-time income with a clear path to grow</li>
         </ul>
         <a href="#contact" class="btn btn-blue" data-role="rep">Apply to sell</a>
       </div>
       <!-- Partners -->
       <div class="card dark reveal" id="partners">
-        <span class="tag">For internet &amp; telecom brands</span>
-        <h3>Boots on the ground that convert.</h3>
-        <p>Skip the hiring, the training, and the churn. We deploy vetted, managed field teams that put your product in front of doors and bring you signed customers.</p>
+        <span class="tag">For internet &amp; fixed-wireless brands</span>
+        <h3>We build the program<br>around your network.</h3>
+        <p>We don't just drop reps into whatever system you've got. We come in like a master dealer — mapping routes across your network, coordinating with your technicians, and standing up a door-to-door program designed to scale, not one bolted onto a setup that was never built for the field.</p>
         <ul>
-          <li>Fully managed, trained, and compliant field reps</li>
-          <li>Transparent reporting on knocks, leads, and closes</li>
-          <li>Scale a market up or down without the overhead</li>
-          <li>Pay for performance, not promises</li>
+          <li>Program design — we build the D2D motion around your coverage</li>
+          <li>Route planning that cuts coordination and truck-roll costs</li>
+          <li>Tight coordination with your techs and install capacity</li>
+          <li>A managed, trained team working your routes consistently</li>
         </ul>
-        <a href="#contact" class="btn btn-blue" data-role="company">Book a call</a>
+        <a href="#contact" class="btn btn-blue" data-role="company">Partner with us</a>
       </div>
     </div>
   </div>
@@ -240,10 +239,10 @@
 <section style="padding-top:8px;padding-bottom:8px">
   <div class="wrap">
     <div class="stats reveal">
-      <div class="stat"><div class="num"><em>100%</em></div><div class="lbl">Managed teams — you never touch payroll or HR</div></div>
-      <div class="stat"><div class="num">7-Day</div><div class="lbl">Ramp for new reps from apply to first door</div></div>
-      <div class="stat"><div class="num">$0</div><div class="lbl">Startup cost for reps — we invest in you</div></div>
-      <div class="stat"><div class="num">Multi</div><div class="lbl">-market coverage for partner brands</div></div>
+      <div class="stat"><div class="num"><em>Leads</em></div><div class="lbl">Supplied to every rep — you never knock blind</div></div>
+      <div class="stat"><div class="num">$0</div><div class="lbl">Startup cost — we invest in you from day one</div></div>
+      <div class="stat"><div class="num">Daily</div><div class="lbl">Incentives, plus weekly and monthly bonuses</div></div>
+      <div class="stat"><div class="num">Roles</div><div class="lbl">Full-time or part-time — with a real path to grow</div></div>
     </div>
   </div>
 </section>
@@ -253,12 +252,12 @@
   <div class="wrap">
     <div class="reveal">
       <p class="sec-label">How it works</p>
-      <h2 class="sec-title">Two lanes. One machine.</h2>
+      <h2 class="sec-title">How to get started.</h2>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="n">01</div><h4>You reach out</h4><p>Reps apply to sell. Brands tell us the market and the product. Either way, it starts with the form below.</p></div>
-      <div class="step reveal"><div class="n">02</div><h4>We build the team</h4><p>We train reps, assign territory, and stand up a managed field operation around your product and your goals.</p></div>
-      <div class="step reveal"><div class="n">03</div><h4>Doors turn into deals</h4><p>Reps earn on every close. Partners get signed customers and clean reporting. Everybody moves.</p></div>
+      <div class="step reveal"><div class="n">01</div><h4>You apply</h4><p>Text or email us — takes a minute. Tell us a little about yourself.</p></div>
+      <div class="step reveal"><div class="n">02</div><h4>We get you ready</h4><p>We train you on the pitch, hand you your leads, and map the route you'll run.</p></div>
+      <div class="step reveal"><div class="n">03</div><h4>You hit the doors</h4><p>Work your route, stack your closes, and cash in on daily, weekly, and monthly incentives.</p></div>
     </div>
   </div>
 </section>
@@ -268,12 +267,12 @@
   <div class="contact reveal">
     <div class="contact-cta">
       <h2>Let's get<br><span class="swoosh-blue">moving.</span></h2>
-      <p>Whether you're here to sell or here to hire a team that sells, reach out and we'll be in touch fast.</p>
+      <p>Apply in two minutes. Text or email us and we'll get right back to you.</p>
       <div class="contact-actions">
-        <a href="mailto:admin@sellmotion.net?subject=Motion%20Marketing%20Inquiry" class="btn btn-blue">Email us</a>
-        <a href="tel:+18018000549" class="btn btn-ghost-light">Call (801) 800-0549</a>
+        <a href="mailto:admin@sellmotion.net?subject=Rep%20Application" class="btn btn-blue">Apply by email</a>
+        <a href="sms:+18018000549?&body=Hi%2C%20I'd%20like%20to%20apply%20to%20Motion%20Marketing." class="btn btn-ghost-light">Apply by text</a>
       </div>
-      <p class="form-note">Tell us whether you're a rep or a company — we reply fast.</p>
+      <p class="form-note">Companies: use “Partner with us” above. Reps: apply here — we reply fast.</p>
     </div>
   </div>
 </section>
