@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Motion Marketing website — Version V5.3 -->
+<!-- Motion Marketing website — Version V6.0 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -81,20 +81,35 @@
   .sec-label{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.16em;font-size:13px;color:var(--grey);margin-bottom:18px}
   .sec-title{font-size:clamp(34px,5vw,60px);max-width:14ch;margin-bottom:18px}
 
-  /* ---------- Split (two audiences) ---------- */
-  .split{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-  .card{border:2px solid var(--ink);border-radius:22px;padding:40px;background:var(--paper);display:flex;flex-direction:column;transition:transform .2s ease}
-  .card:hover{transform:translateY(-4px)}
-  .card.dark{background:var(--ink);color:var(--paper)}
-  .card .tag{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.14em;font-size:12px;margin-bottom:16px}
-  .card.dark .tag{color:var(--blue)}
-  .card h3{font-size:clamp(28px,3.4vw,40px);margin-bottom:16px}
-  .card p{font-size:16px;margin-bottom:24px}
-  .card.dark p{color:#c9c9c9}
-  .card ul{list-style:none;margin-bottom:32px;display:flex;flex-direction:column;gap:12px}
-  .card li{position:relative;padding-left:28px;font-size:15px;font-weight:500}
-  .card li::before{content:"";position:absolute;left:0;top:8px;width:14px;height:14px;background:var(--blue);border-radius:4px;transform:rotate(45deg)}
-  .card .btn{align-self:flex-start;margin-top:auto}
+  /* ---------- Perks scroller ---------- */
+  .perks-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .perks-hint{font-size:14px;color:var(--grey);font-weight:500;white-space:nowrap}
+  .perks-scroll{
+    display:flex;gap:20px;margin-top:40px;
+    overflow-x:auto;overflow-y:hidden;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding:4px 24px 8px;
+    margin-left:-24px;margin-right:-24px;
+    scroll-padding-left:24px;
+  }
+  .perks-scroll::-webkit-scrollbar{display:none}
+  .perk{
+    flex:0 0 auto;width:360px;scroll-snap-align:start;
+    border:2px solid var(--ink);border-radius:22px;background:var(--paper);
+    overflow:hidden;display:flex;flex-direction:column;
+    transition:transform .2s ease;
+  }
+  .perk:hover{transform:translateY(-4px)}
+  .perk img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border-bottom:2px solid var(--ink)}
+  .perk-body{padding:26px 24px 28px}
+  .perk h4{font-family:'Archivo',sans-serif;font-weight:800;text-transform:uppercase;font-size:20px;line-height:1.05;letter-spacing:-.01em;margin-bottom:10px}
+  .perk p{font-size:15px;color:#333}
+  @media (max-width:860px){
+    .perk{width:82vw;max-width:340px}
+    .perks-hint{display:none}
+  }
 
   /* ---------- Stats ---------- */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:56px 0}
@@ -154,10 +169,10 @@
   /* ---------- Responsive ---------- */
   @media (max-width:860px){
     .nav-links{display:none}
-    .split{grid-template-columns:1fr}
     .stats{grid-template-columns:1fr 1fr;gap:36px 24px}
     .steps{grid-template-columns:1fr}
     section{padding:72px 0}
+    .hero{padding:56px 0 32px}
   }
 </style>
 </head>
@@ -169,8 +184,8 @@
     <nav>
       <a href="#top" class="brand"><img src="motion-logo.png" alt="Motion MKTG"></a>
       <div class="nav-links">
-        <a href="#reps">For Reps</a>
-        <a href="#partners">For Companies</a>
+        <a href="#perks">For Reps</a>
+        <a href="#contact">For Companies</a>
         <a href="#how">How It Works</a>
       </div>
       <div class="nav-cta">
@@ -189,7 +204,7 @@
       <p class="lead">We hire full and part-time D2D reps and set them up to win. No cold guessing — we supply the leads, the pitch, the training, and a route to run every day. You bring the work ethic; we handle the rest.</p>
       <div class="hero-cta">
         <a href="https://app.salesdraft.io/talent/motion-marketing" target="_blank" rel="noopener" class="btn btn-blue">Apply now</a>
-        <a href="#reps" class="btn btn-ghost">Why Motion</a>
+        <a href="#perks" class="btn btn-ghost">Why Motion</a>
       </div>
       <p class="hero-note">Full-time &amp; part-time roles · Leads supplied · Daily, weekly &amp; monthly incentives</p>
     </div>
@@ -204,35 +219,58 @@
   </div>
 </section>
 
-<!-- ============ SPLIT: TWO AUDIENCES ============ -->
-<section id="reps" style="padding-top:40px">
+<!-- ============ PERKS ============ -->
+<section id="perks" style="padding-top:64px">
   <div class="wrap">
-    <div class="split">
-      <!-- Reps -->
-      <div class="card reveal">
-        <span class="tag">For sales reps</span>
-        <h3>Plug into a program<br>built to win.</h3>
-        <p>We hire reps and set them up to actually succeed. You're not guessing where to knock or how to pitch — we hand you the leads, a proven system, and a route to work every day. You bring the work ethic.</p>
-        <ul>
-          <li>Leads supplied and a mapped route — we tell you exactly where to go</li>
-          <li>A proven pitch and hands-on training from people who close</li>
-          <li>Daily, weekly, and monthly incentives — car-payment incentives available</li>
-          <li>Real full-time income with a clear path to grow</li>
-        </ul>
-        <a href="https://app.salesdraft.io/talent/motion-marketing" target="_blank" rel="noopener" class="btn btn-blue">Apply to sell</a>
+    <div class="reveal">
+      <div class="perks-head">
+        <div>
+          <p class="sec-label">Why reps stay</p>
+          <h2 class="sec-title">What you get.</h2>
+        </div>
+        <p class="perks-hint">Scroll for more →</p>
       </div>
-      <!-- Partners -->
-      <div class="card dark reveal" id="partners">
-        <span class="tag">For internet &amp; fixed-wireless brands</span>
-        <h3>We build the program<br>around your network.</h3>
-        <p>We don't just drop reps into whatever system you've got. We come in like a master dealer — mapping routes across your network, coordinating with your technicians, and standing up a door-to-door program designed to scale, not one bolted onto a setup that was never built for the field.</p>
-        <ul>
-          <li>Program design — we build the D2D motion around your coverage</li>
-          <li>Route planning that cuts coordination and truck-roll costs</li>
-          <li>Tight coordination with your techs and install capacity</li>
-          <li>A managed, trained team working your routes consistently</li>
-        </ul>
-        <a href="sms:+18018000549" class="btn btn-gray">Text Us</a>
+    </div>
+
+    <div class="perks-scroll reveal">
+      <div class="perk">
+        <img src="%24200_bonus.png" alt="Two $100 bills held up in a neighborhood" loading="lazy">
+        <div class="perk-body">
+          <h4>$200 First Sale Bonus</h4>
+          <p>Get your first deal, and we'll Venmo or Cash App you $200 same day (on top of your regular commission).</p>
+        </div>
+      </div>
+
+      <div class="perk">
+        <img src="weekly_pay.png" alt="Rep showing his weekly commission payout on his phone" loading="lazy">
+        <div class="perk-body">
+          <h4>Uncapped Commission</h4>
+          <p>No ceiling on what you earn, and you get paid every week. Your best month is up to you.</p>
+        </div>
+      </div>
+
+      <div class="perk">
+        <img src="training.png" alt="Two reps training together on a neighborhood sidewalk" loading="lazy">
+        <div class="perk-body">
+          <h4>No Experience? No Problem.</h4>
+          <p>We teach you everything: training, sales tools, 1-on-1 help, and whatever else you need to succeed.</p>
+        </div>
+      </div>
+
+      <div class="perk">
+        <img src="car_incentive.png" alt="Car keys held up in front of a car in a driveway" loading="lazy">
+        <div class="perk-body">
+          <h4>Monthly Car Payment Bonus</h4>
+          <p>Hit your monthly target and get a $450 bonus to cover your car payment, or spend it how you like!</p>
+        </div>
+      </div>
+
+      <div class="perk">
+        <img src="travel.png" alt="Boarding passes held up at an airport gate" loading="lazy">
+        <div class="perk-body">
+          <h4>Explore the Country</h4>
+          <p>Proven reps can join 2-week sales trips across the U.S. Explore the country while making money in the best new markets.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -286,8 +324,7 @@
     <div class="footer-top">
       <img src="motion-logo.png" alt="Motion MKTG">
       <div class="footer-links">
-        <a href="#reps">For Reps</a>
-        <a href="#partners">For Companies</a>
+        <a href="#perks">For Reps</a>
         <a href="#how">How It Works</a>
         <a href="#contact">Contact</a>
       </div>
